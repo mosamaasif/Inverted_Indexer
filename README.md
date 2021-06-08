@@ -100,7 +100,7 @@ This will present you with the following Menu Screen:
 Now enter a number corresponding to the given Menu Options:
     <ol>
     <li> <b>Search Only:</b> If you have already created the inverted index, you can simply search.
-    <li> <b>Rebuild Index and Search:</b> If you want to rebuild index, or create it for the first time, and then search. This will ask for a path to the corpus.
+    <li> <b>Rebuild Index and Search:</b> If you want to rebuild index, or create it for the first time, and then search. This will ask for a path to the corpus (sample corpora provided).
     <li> <b>Exit:</b> Simply Exit the program.
     </ol>
     
