@@ -60,12 +60,8 @@ def init():
     global STOP_WORDS
     STOP_WORDS = stopwords.words('english')
 
-    if os.path.isfile('query_hits.json') and os.access('query_hits.json', os.R_OK):
-        with io.open('query_hits.json', encoding='utf-8', mode='r') as jf:
-            global HITS_JSON
-            HITS_JSON = json.load(jf)
-    else:
-        HITS_JSON = {}
+    global HITS_JSON
+    HITS_JSON = {}
 
 
 # Uses BeautifulSoup to parse html file and get strings from it's body
@@ -226,8 +222,8 @@ def store_block_inverted_index(s_dir, block_inverted_index):
     print_header('BLOCK SAVE', 'Saving Inverted Index for BLOCK', val=s_dir)
 
     dir_name = s_dir[s_dir.rfind(PATH_SEP) + 1:]
-    with open(f'index_{dir_name}_postings.txt', encoding='utf-8', mode='w') as p_file:
-        with open(f'index_{dir_name}_terms.txt', encoding='utf-8', mode='w') as t_file:
+    with open(f'data/intermediate/index_{dir_name}_postings.txt', encoding='utf-8', mode='w') as p_file:
+        with open(f'data/intermediate/index_{dir_name}_terms.txt', encoding='utf-8', mode='w') as t_file:
             byte_pos = 0
 
             for key in block_inverted_index.keys():
@@ -259,7 +255,7 @@ def gen_complete_inverted_index(sub_dirs):
         store_block_inverted_index(sub_dir, block_inverted_index)
 
     # Task-4: Stores docInfo file
-    with open('docInfo.txt', encoding='utf-8', mode='w') as f:
+    with open('data/final/docInfo.txt', encoding='utf-8', mode='w') as f:
         f.write(json.dumps(d_info_all))
 
 
@@ -297,13 +293,13 @@ def merge_indices(sub_dirs):
 
     file_names = [s_dir[s_dir.rfind(PATH_SEP) + 1:] for s_dir in sub_dirs]
 
-    idx_terms_fds = [open(f'index_{fff}_terms.txt', encoding='utf-8', mode='r')
+    idx_terms_fds = [open(f'data/intermediate/index_{fff}_terms.txt', encoding='utf-8', mode='r')
                      for fff in file_names]
-    idx_posting_fds = [open(f'index_{fff}_postings.txt', encoding='utf-8', mode='r')
+    idx_posting_fds = [open(f'data/intermediate/index_{fff}_postings.txt', encoding='utf-8', mode='r')
                        for fff in file_names]
 
-    merged_idx_terms_fd = open('inverted_index_terms.txt', encoding='utf-8', mode='w')
-    merged_idx_posting_fd = open('inverted_index_postings.txt', encoding='utf-8', mode='w')
+    merged_idx_terms_fd = open('data/final/inverted_index_terms.txt', encoding='utf-8', mode='w')
+    merged_idx_posting_fd = open('data/final/inverted_index_postings.txt', encoding='utf-8', mode='w')
 
     # Get first line of each index_{}_terms.txt file
     idx_terms_lines = {idx: fd.readline() for idx, fd in enumerate(idx_terms_fds)}
@@ -390,7 +386,7 @@ def boolean_retrieval(query, data, doc_info_all):
     stemmed_words = [SNOWBALL_STEMMER.stem(tok) for tok in unique_tokens]
 
     query_hits = []
-    with open('inverted_index_postings.txt', encoding='utf-8', mode='r') as p_file:
+    with open('data/final/inverted_index_postings.txt', encoding='utf-8', mode='r') as p_file:
         for word in stemmed_words:
             if word in data:
                 posting_location = data[word]
@@ -421,9 +417,9 @@ def boolean_retrieval(query, data, doc_info_all):
 def search_query(query):
 
     try:
-        with open('docInfo.txt', encoding='utf-8', mode='r') as f:
+        with open('data/final/docInfo.txt', encoding='utf-8', mode='r') as f:
 
-            data = load_inverted_index_terms('inverted_index_terms.txt')
+            data = load_inverted_index_terms('data/final/inverted_index_terms.txt')
 
             doc_info_all = json.loads(f.read())
 
