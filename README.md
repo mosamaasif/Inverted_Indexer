@@ -1,5 +1,4 @@
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -100,13 +99,13 @@ This will present you with the following Menu Screen:
 
 Now enter a number corresponding to the given Menu Options:
     <ol>
-    <li> Search Only: If you have already created the inverted index, you can simply search.
-    <li> Rebuild Index and Search: If you want to rebuild index, or create it for the first time, and then search. This will ask for a path to the corpus.
-    <li> Exit: Simply Exit the program.
+    <li> <b>Search Only:</b> If you have already created the inverted index, you can simply search.
+    <li> <b>Rebuild Index and Search:</b> If you want to rebuild index, or create it for the first time, and then search. This will ask for a path to the corpus.
+    <li> <b>Exit:</b> Simply Exit the program.
     </ol>
     
    ***NOTE:***  
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`The Corpora can have subdirectories, path in Menu Option 2 has to be for the root directory. Each Subdirectory will be merged once preprocessed and saved  seprately.`
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`The Corpora can have subdirectories, path in Menu Option 2 has to be for the root directory. Each Subdirectory will be merged once preprocessed and individual files have been created.`
     
     
 ### Example Images
@@ -129,5 +128,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [license-shield]: https://img.shields.io/github/license/saeenyoda/Inverted_Indexing?label=license&style=for-the-badge
 [license-url]: https://github.com/saeenyoda/Inverted_Indexing/blob/master/LICENSE
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/feed/
