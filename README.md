@@ -35,6 +35,10 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <ul>
+        <li><a href="#how-to-run">How to Run</a></li>
+        <li><a href="#example-images">Example Images</a></li>
+      </ul>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -92,24 +96,28 @@ To get a local copy up and running follow these simple steps.
    ```
 
 This will present you with the following Menu Screen:
-
-[![Menu Screen][images/menu_screen.png]]
+<img src="images/menu_screen.png">
 
 Now enter a number corresponding to the given Menu Options:
     <ol>
     <li> Search Only: If you have already created the inverted index, you can simply search.
-    <li> Rebuild Index and Search: If you want to rebuild index, or create it for the first time, and then search.
+    <li> Rebuild Index and Search: If you want to rebuild index, or create it for the first time, and then search. This will ask for a path to the corpus.
     <li> Exit: Simply Exit the program.
     </ol>
     
+   ***NOTE:***  
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`The Corpora can have subdirectories, path in Menu Option 2 has to be for the root directory. Each Subdirectory will be merged once preprocessed and saved  seprately.`
     
-## Screen when index is being created
-* [![Generating Index][images/gen_screen_1.png]]
-* [![Generating Index][images/gen_screen_2.png]]
-
-## Search and Result Screen
-* [![Search Screen][images/search_screen.png]]
-* [![Result Screen][images/result_screen.png]]
+    
+### Example Images
+* When a subdirectory is being preprocessed
+  <img src="images/gen_screen_1.png">
+* When the inverted index for that subdirectory is being stored
+  <img src="images/gen_screen_2.png">
+* Asks for Query
+  <img src="images/search_screen.png">
+* Shows documents found, time taken and document names
+  <img src="images/result_screen.png">
 
 <!-- LICENSE -->
 ## License
