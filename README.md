@@ -68,6 +68,7 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 * [Python3](https://www.python.org/downloads/)
+* [git](https://git-scm.com)
 
 ### Installation
 
